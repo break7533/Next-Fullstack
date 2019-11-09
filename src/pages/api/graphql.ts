@@ -1,4 +1,4 @@
-import { ApolloServer, gql } from "apollo-server-micro";
+import { ApolloServer, gql } from 'apollo-server-micro';
 
 const typeDefs = gql`
   type Query {
@@ -8,8 +8,8 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    sayHello: () => {
-      return "Hello World!";
+    sayHello: (): string => {
+      return 'Hello World!';
     }
   }
 };
@@ -22,7 +22,7 @@ export const config = {
   }
 };
 
-export default apolloServer.createHandler({ path: "/api/graphql" });
+export default apolloServer.createHandler({ path: '/api/graphql' });
 
 // import { NextApiRequest, NextApiResponse } from "next";
 
