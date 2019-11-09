@@ -1,16 +1,7 @@
-import React from 'react';
-import Head from 'next/head';
-import Nav from '../components/nav';
+import Layout from '../components/layout';
 
 const Home = (): JSX.Element => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
-    <Nav />
-
+  <Layout>
     <div className="hero">
       <h1 className="title">Welcome to Next.js!</h1>
       <p className="description">
@@ -88,7 +79,7 @@ const Home = (): JSX.Element => (
       }
     `}
     </style>
-  </div>
+  </Layout>
 );
 
 export default Home;
