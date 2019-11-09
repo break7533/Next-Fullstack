@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "next dev ./src",
+    "build": "next build ./src",
+    "start": "next start ./src",
     "lint": "eslint --fix ./src/**/**.tsx"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/node": "^12.12.6",
     "@types/react": "^16.9.11",
+    "@types/styled-jsx": "^2.2.8",
     "@typescript-eslint/eslint-plugin": "^2.6.1",
     "@typescript-eslint/parser": "^2.6.1",
     "eslint": "^6.6.0",
