@@ -9,6 +9,7 @@
     "lint": "eslint --fix ./src/**/**.tsx"
   },
   "dependencies": {
+    "apollo-server-micro": "^2.9.7",
     "next": "9.1.1",
     "react": "16.10.2",
     "react-dom": "16.10.2"
