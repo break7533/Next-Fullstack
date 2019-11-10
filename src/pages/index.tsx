@@ -20,34 +20,33 @@ const Home = (): JSX.Element => {
     <Layout>
       <div className="hero">
         <h1 className="title">Level up your life</h1>
-        <HabitForm setHabits={setHabits} />
-        <HabitList habits={habits} />
+        <div className="list">
+          <HabitForm setHabits={setHabits} />
+          <HabitList habits={habits} />
+        </div>
       </div>
 
-      <style jsx>
-        {`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin-top: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-
-      .list {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-    `}
-      </style>
+      <style jsx>{`
+        .hero {
+          width: 100%;
+          color: #333;
+        }
+        .title {
+          margin-top: 0;
+          width: 100%;
+          padding-top: 80px;
+          line-height: 1.15;
+          font-size: 48px;
+        }
+        .title,
+        .description {
+          text-align: center;
+        }
+        .list {
+          max-width: 600px;
+          margin: 0 auto;
+        }
+      `}</style>
     </Layout>
   );
 };

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Field, Form } from '@leveluptuts/fresh';
 
 const HabitForm = ({ setHabits }) => {
