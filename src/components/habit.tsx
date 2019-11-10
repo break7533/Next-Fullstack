@@ -1,15 +1,23 @@
 import HabitButton from './habitButton';
 
-const Habit = (): JSX.Element => {
+const getLast7Days = (): Date[] => {
+    const dates = '0123456'.split('').map((day: string) => {
+        const tempDate = new Date();
+        tempDate.setDate(tempDate.getDate() - parseInt(day));
+        return tempDate;
+    });
+    return dates;
+};
+
+const Habit = ({ habit }): JSX.Element => {
+    const dates = getLast7Days();
     return (
         <article>
-            <h3> Habit Title</h3>
+            <h3>{habit}</h3>
             <div>
-                <HabitButton />
-                <HabitButton />
-                <HabitButton />
-                <HabitButton />
-                <HabitButton />
+                {dates.map((date) => (
+                    <HabitButton key={date.toDateString()} date={date} />
+                ))}
             </div>
         </article>
     );
