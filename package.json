@@ -37,6 +37,6 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "terser-webpack-plugin": "^1.4.2",
     "typescript": "^3.7.2",
-    "serialize-javascript": ">=2.1.1",
+    "serialize-javascript": ">=2.1.1"
   }
 }
