@@ -35,6 +35,8 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "typescript": "^3.7.2"
+    "terser-webpack-plugin": "^1.4.2",
+    "typescript": "^3.7.2",
+    "serialize-javascript": ">=2.1.1",
   }
 }
