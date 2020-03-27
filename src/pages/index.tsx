@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { withApollo } from '../lib/apollo';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import Layout from '../components/layout';
 import HabitList from '../components/habitList';
+import HabitForm from '../components/habitForm';
 
 const HELLO_QUERY = gql`
   query HelloQuery {
@@ -11,6 +13,7 @@ const HELLO_QUERY = gql`
 `;
 
 const Home = (): JSX.Element => {
+  const [habits, setHabits] = useState(['Wash teeth']);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data, loading, error } = useQuery(HELLO_QUERY);
   if (loading) return <div></div>;
@@ -18,7 +21,10 @@ const Home = (): JSX.Element => {
     <Layout>
       <div className="hero">
         <h1 className="title">Level up your life</h1>
-        <HabitList />
+        <div className="list">
+          <HabitForm setHabits={setHabits} />
+          <HabitList habits={habits} />
+        </div>
       </div>
 
       <style jsx>
@@ -28,7 +34,7 @@ const Home = (): JSX.Element => {
         color: #333;
       }
       .title {
-        margin: 0;
+        margin-top: 0;
         width: 100%;
         padding-top: 80px;
         line-height: 1.15;
@@ -37,6 +43,10 @@ const Home = (): JSX.Element => {
       .title,
       .description {
         text-align: center;
+      }
+      .list {
+        max-width: 600px;
+        margin: 0 auto;
       }
     `}
       </style>
