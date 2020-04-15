@@ -19,11 +19,14 @@
     "apollo-server-micro": "^2.11.0",
     "dotenv": "^8.2.0",
     "isomorphic-unfetch": "^3.0.0",
+    "mongoose": "^5.9.9",
     "next": "^9.3.2",
     "react": "16.10.2",
     "react-dom": "16.10.2"
   },
   "devDependencies": {
+    "@types/mongodb": "^3.5.6",
+    "@types/mongoose": "^5.7.10",
     "@types/node": "^12.12.30",
     "@types/react": "^16.9.25",
     "@types/styled-jsx": "^2.2.8",

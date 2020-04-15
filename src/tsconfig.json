@@ -27,6 +27,6 @@
     "**/*.tsx",
     "**/src/**/*.ts",
     "**/src/**/*.tsx",
-    "../next.config.js",
+    "../next.config.js"
   ]
 }
