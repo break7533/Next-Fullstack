@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { withApollo } from '../lib/apollo';
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -13,7 +12,6 @@ const HELLO_QUERY = gql`
 `;
 
 const Home = (): JSX.Element => {
-  const [habits, setHabits] = useState(['Wash teeth']);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data, loading, error } = useQuery(HELLO_QUERY);
   if (loading) return <div></div>;
@@ -22,7 +20,7 @@ const Home = (): JSX.Element => {
       <div className="hero">
         <h1 className="title">Level up your life</h1>
         <div className="list">
-          <HabitForm setHabits={setHabits} />
+          <HabitForm />
           <HabitList />
         </div>
       </div>

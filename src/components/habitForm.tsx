@@ -2,10 +2,6 @@ import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { Field, Form } from '@leveluptuts/fresh';
 
-interface IHabitFormProps {
-    setHabits: (prevState) => void;
-}
-
 interface IFieldData {
     habit: string;
 }
@@ -19,8 +15,10 @@ const ADD_HABIT = gql`
     }
 `;
 
-const HabitForm = (props: IHabitFormProps): JSX.Element => {
-    const [addHabit] = useMutation(ADD_HABIT);
+const HabitForm = (): JSX.Element => {
+    const [addHabit] = useMutation(ADD_HABIT, {
+        refetchQueries: ['getHabits']
+    });
     return (
         // Sadly I can't fix this :(
         // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
