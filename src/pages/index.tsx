@@ -23,7 +23,7 @@ const Home = (): JSX.Element => {
         <h1 className="title">Level up your life</h1>
         <div className="list">
           <HabitForm setHabits={setHabits} />
-          <HabitList habits={habits} />
+          <HabitList />
         </div>
       </div>
 

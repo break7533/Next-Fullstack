@@ -25,6 +25,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.graphql",
     "**/src/**/*.ts",
     "**/src/**/*.tsx",
     "../next.config.js"

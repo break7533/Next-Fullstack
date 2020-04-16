@@ -1,15 +1,27 @@
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import Habit from './habit';
 
-interface IHabitListProps {
-    habits: string[];
-}
+const GET_HABITS = gql`
+    query getHabits {
+        habits {
+            _id
+            name
+        }
+    }
+`;
 
-const HabitList = (props: IHabitListProps): JSX.Element => {
+const HabitList = (): JSX.Element => {
+    const { data, loading } = useQuery(GET_HABITS);
+    if (loading) return <section />;
+
+    const { habits } = data;
+
     return (
         <section>
             <h2>My Habits</h2>
-            {props.habits.map((habit, index) => (
-                <Habit key={habit} habit={habit} index={index} />
+            {habits.map((habit, index) => (
+                <Habit key={habit._id} habit={habit.name} index={index} />
             ))}
         </section>
     );
