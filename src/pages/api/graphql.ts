@@ -1,19 +1,29 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
 import connectDb from '../../lib/mongoose';
+import { mergeResolvers, mergeTypeDefs } from '@graphql-toolkit/schema-merging';
+import { habitsMutations } from '../../api/habits/mutations';
+import { habitsResolvers } from '../../api/habits/resolvers';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
+import Habits from '../../api/habits/Habits.graphql';
 
-const typeDefs = gql`
+const fakeTypeDefs = gql`
   type Query {
     sayHello: String
   }
 `;
 
-const resolvers = {
+const fakeResolvers = {
     Query: {
         sayHello: (): string => {
             return 'Hello Everybody!';
         }
     }
 };
+
+const typeDefs = mergeTypeDefs([fakeTypeDefs, Habits]);
+
+const resolvers = mergeResolvers([fakeResolvers, habitsResolvers, habitsMutations]);
 
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
