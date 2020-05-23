@@ -1,7 +1,14 @@
 import HabitButton from './habitButton';
 
 interface IHabitProps {
-    habit: string;
+    habit: {
+        _id: string;
+        events: {
+            _id: string;
+            date: Date;
+        };
+        name: string;
+    };
     index: number;
 }
 
@@ -25,9 +32,15 @@ const Habit = (props: IHabitProps): JSX.Element => {
     const dates = getLastSevenDays();
     return (
         <article>
-            <h3>{props.habit}</h3>
+            <h3>{props.habit.name}</h3>
             <div className="buttons">
-                {dates.map((date) => <HabitButton key={date.getTime()} {...{ date }} />)}
+                {dates.map((date) => (
+                    <HabitButton
+                        key={date.getTime()}
+                        {...{ date }}
+                        habitId={props.habit._id}
+                        events={props.habit.events} />
+                ))}
             </div>
             <style jsx>{`
             article {

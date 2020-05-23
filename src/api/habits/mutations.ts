@@ -12,6 +12,14 @@ export const habitsMutations = {
                 // eslint-disable-next-line no-console
                 console.log(e);
             }
+        },
+
+        async addEvent(_, { habitId, date }): Promise<any> {
+            console.log('add Event');
+        },
+
+        async removeEvent(_, { habitId, eventId }): Promise<any> {
+            console.log('remove Event');
         }
     }
 };

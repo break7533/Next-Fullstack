@@ -1,17 +1,76 @@
-import { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 
 interface IHabitButtonProps {
+    habitId: string;
+    events: {
+        _id: string;
+        date: Date;
+    };
     date: Date;
 }
 
+const ADD_EVENT = gql`
+    mutation addEvent($date: Date, $habitId: ID) {
+        addEvent(date: $date, habitId: $habitId) {
+            _id
+            name
+            events {
+                _id
+                date
+            }
+        }
+    }
+`;
+
+const REMOVE_EVENT = gql`
+    mutation removeEvent($eventId: ID, $habitId: ID) {
+        removeEvent(eventId: $eventId, habitId: $habitId) {
+            _id
+            name
+            events {
+                _id
+                date
+            }
+        }
+    }
+`;
+
 const HabitButton = (props: IHabitButtonProps): JSX.Element => {
-    const [complete, setComplete] = useState(false);
+    const [addEvent] = useMutation(ADD_EVENT, {
+        refetchQueries: ['getHabits']
+    });
+
+    const [removeEvent] = useMutation(REMOVE_EVENT, {
+        refetchQueries: ['getHabits']
+    });
+
+    const found = false;
+
     return (
         <span>
             {props.date.getDate()}/{props.date.getMonth() + 1}
-            <button onClick={(): void => setComplete(!complete)}>
-                {complete ? 'X' : 'O'}
-            </button>
+            {
+                found ? (
+                    <button onClick={(): any => removeEvent({
+                        variables: {
+                            habitId: props.habitId,
+                            eventId: 'assaasa',
+                        }
+                    })}>
+                        X
+                    </button>
+                ) : (
+                        <button onClick={(): any => addEvent({
+                            variables: {
+                                habitId: props.habitId,
+                                date: props.date,
+                            }
+                        })}>
+                            O
+                        </button>
+                    )
+            }
             <style jsx>{`
                 span {
                     display: flex;
