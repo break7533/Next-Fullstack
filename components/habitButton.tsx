@@ -3,10 +3,10 @@ import gql from 'graphql-tag';
 
 interface IHabitButtonProps {
     habitId: string;
-    events: {
+    events: [{
         _id: string;
         date: Date;
-    };
+    }];
     date: Date;
 }
 
@@ -45,17 +45,20 @@ const HabitButton = (props: IHabitButtonProps): JSX.Element => {
         refetchQueries: ['getHabits']
     });
 
-    const found = false;
+    const foundDate = props.events.find((event) => {
+        const eventDate = new Date(event.date);
+        return eventDate.getDate() === props.date.getDate();
+    });
 
     return (
         <span>
             {props.date.getDate()}/{props.date.getMonth() + 1}
             {
-                found ? (
+                foundDate ? (
                     <button onClick={(): any => removeEvent({
                         variables: {
                             habitId: props.habitId,
-                            eventId: 'assaasa',
+                            eventId: foundDate._id,
                         }
                     })}>
                         X

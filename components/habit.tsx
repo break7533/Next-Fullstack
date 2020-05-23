@@ -3,10 +3,10 @@ import HabitButton from './habitButton';
 interface IHabitProps {
     habit: {
         _id: string;
-        events: {
+        events: [{
             _id: string;
             date: Date;
-        };
+        }];
         name: string;
     };
     index: number;
