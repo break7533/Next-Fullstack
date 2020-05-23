@@ -1,9 +1,7 @@
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/react-hooks';
 import fetch from 'isomorphic-unfetch';
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
+import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from 'apollo-boost';
 import { NextPageContext } from 'next';
 import { AppContext } from 'next/app';
 
@@ -16,11 +14,15 @@ interface INextPageContextWithApollo extends NextPageContext {
 
 type NextPageContextApp = INextPageContextWithApollo & AppContext;
 
+const isDev = process.env.NODE_ENV !== 'production';
+const url = isDev ? 'http://localhost:3000' : 'https://next-fullstack.break7533.now.sh/';
+
 const initApolloClient = (initialState = {}): ApolloClient<{}> => {
     const cache = new InMemoryCache().restore(initialState);
     const link = new HttpLink({
         fetch,
-        uri: 'http://localhost:3000/api/graphql',
+        uri: `${url}/api/graphql`,
+        useGETForQueries: true,
     });
     const ssrMode = typeof window === 'undefined';
     const client = new ApolloClient({

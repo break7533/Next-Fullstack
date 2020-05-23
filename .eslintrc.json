@@ -22,7 +22,7 @@
         "ecmaVersion": 2018,
         "sourceType": "module",
         "project": "./tsconfig.json",
-        "tsconfigRootDir": "./src"
+        "tsconfigRootDir": "./"
     },
     "plugins": [
         "react",
@@ -41,7 +41,7 @@
                     ".d.tsx"
                 ],
                 "paths": [
-                    "./src"
+                    "./"
                 ]
             }
         }

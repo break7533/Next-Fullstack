@@ -1,11 +1,11 @@
 import { ApolloServer, gql } from 'apollo-server-micro';
 import connectDb from '../../lib/mongoose';
 import { mergeResolvers, mergeTypeDefs } from '@graphql-toolkit/schema-merging';
-import { habitsMutations } from '../../api/habits/mutations';
-import { habitsResolvers } from '../../api/habits/resolvers';
+import { habitsMutations } from '../../src/api/habits/mutations';
+import { habitsResolvers } from '../../src/api/habits/resolvers';
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
-import Habits from '../../api/habits/Habits.graphql';
+import Habits from '../../src/api/habits/Habits.graphql';
 
 const fakeTypeDefs = gql`
   type Query {
@@ -25,7 +25,12 @@ const typeDefs = mergeTypeDefs([fakeTypeDefs, Habits]);
 
 const resolvers = mergeResolvers([fakeResolvers, habitsResolvers, habitsMutations]);
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({
+    typeDefs,
+    resolvers,
+    introspection: true,
+    playground: true
+});
 
 export const config = {
     api: {
