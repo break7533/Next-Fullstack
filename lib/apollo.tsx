@@ -21,8 +21,11 @@ const initApolloClient = (initialState = {}): ApolloClient<{}> => {
     const cache = new InMemoryCache().restore(initialState);
     const link = new HttpLink({
         fetch,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },
         fetchOptions: {
-            mode: 'no-cors',
+            mode: 'cors',
         },
         uri: `${url}/api/graphql`,
         useGETForQueries: true,
