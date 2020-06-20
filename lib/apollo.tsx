@@ -15,7 +15,7 @@ interface INextPageContextWithApollo extends NextPageContext {
 type NextPageContextApp = INextPageContextWithApollo & AppContext;
 
 const isDev = process.env.NODE_ENV !== 'production';
-const url = isDev ? 'http://localhost:3000' : 'https://next-fullstack.break7533.now.sh/';
+const url = isDev ? 'http://localhost:3000' : 'https://next-fullstack.break7533.now.sh';
 
 const initApolloClient = (initialState = {}): ApolloClient<{}> => {
     const cache = new InMemoryCache().restore(initialState);
