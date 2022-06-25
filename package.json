@@ -20,7 +20,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "mongoose": "^5.10.7",
     "next": "^11.1.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
